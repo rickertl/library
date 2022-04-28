@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom right, indigo, purple);
+  font-family: "Raleway", sans-serif;
+}
+button {
+  padding: 5px 0;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background-color: transparent;
+  width: 120px;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+}
+button.btn-light {
+  background-color: white;
+  color: black;
+}
+button.btn-dark {
+  background-color: indigo;
+  color: white;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-content: space-between;
+  padding: 10px 40px;
+  box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.1);
+}
+main {
+  padding: 40px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+.logo svg {
+  height: 80px;
+  color: white;
+}
+.top-nav {
+  align-self: center;
+}
+form {
+  margin: 0 auto;
+  width: 300px;
+  display: grid;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+table {
+  margin: 20px auto;
+  text-align: left;
+  background-color: white;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  background-color: transparent;
+}
+th {
+  color: white;
+  padding: 8px 8px 0;
+}
+td {
+  background-color: white;
+  padding: 8px;
+  position: relative;
+}
+td::after {
+  content: "";
+  position: absolute;
+  border-right: 1px solid rgba(75, 0, 130, 0.2);
+  top: 15%;
+  bottom: 15%;
+  right: 0;
+}
+td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+td:last-child {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+thead tr th:nth-of-type(3),
+thead tr th:nth-of-type(4),
+.pages {
+  text-align: center;
+}
+.remove {
+  display: flex;
+  align-items: center;
+}
+.remove button {
+  padding: 0;
+  border-radius: 0;
+  font-weight: normal;
+  width: auto;
+}
+.remove button svg {
+  height: 20px;
+  color: red;
+}
