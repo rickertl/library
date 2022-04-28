@@ -23,12 +23,19 @@ button {
 button.btn-light {
   background-color: white;
   color: black;
+  box-shadow: 3px 3px 4px rgba(255, 255, 255, 0.5);
 }
 button.btn-dark {
   background-color: indigo;
   color: white;
+  box-shadow: 3px 3px 4px rgba(128, 0, 128, 0.5);
 }
-
+button.btn-light:hover,
+button.btn-dark:hover {
+  background-color: black;
+  color: white;
+  box-shadow: none;
+}
 header {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -59,6 +66,12 @@ form {
   background-color: white;
   padding: 20px;
   border-radius: 10px;
+}
+form input {
+  margin-bottom: 15px;
+}
+form input[type="text"] {
+  padding: 5px 8px;
 }
 table {
   margin: 20px auto;
@@ -98,17 +111,30 @@ thead tr th:nth-of-type(4),
 .pages {
   text-align: center;
 }
-.remove {
-  display: flex;
-  align-items: center;
+.title,
+.author {
+  min-width: 125px;
 }
+.read button,
 .remove button {
   padding: 0;
   border-radius: 0;
   font-weight: normal;
   width: auto;
+  display: flex;
+  align-items: center;
+}
+.read button svg {
+  height: 22px;
+  color: silver;
+  /* filter: drop-shadow(2px 2px 2px rgb(128, 0, 128, 0.5)); */
 }
 .remove button svg {
   height: 20px;
   color: red;
+  /* filter: drop-shadow(2px 2px 2px rgb(128, 0, 128, 0.5)); */
+}
+.remove button svg:hover {
+  color: black;
+  filter: none;
 }
