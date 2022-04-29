@@ -62,10 +62,14 @@ main {
 form {
   margin: 0 auto 20px;
   width: 300px;
-  display: none; /* when shown, display: grid; */
-  background-color: white;
+  display: grid;
   padding: 20px;
+  background-color: white;
   border-radius: 10px;
+  position: absolute;
+  left: calc(50% - 150px);
+  opacity: 0;
+  transition: opacity 0.1s linear;
 }
 form input {
   margin-bottom: 15px;
@@ -76,8 +80,10 @@ form input[type="text"] {
 form button {
   margin-top: 15px;
 }
-.show-form {
-  display: grid;
+form.show-form {
+  position: static;
+  opacity: 1;
+  transition: opacity 1s linear;
 }
 table {
   margin: 0 auto;
