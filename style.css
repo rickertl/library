@@ -44,7 +44,7 @@ header {
   box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.1);
 }
 main {
-  padding: 40px;
+  padding: 30px;
 }
 .logo {
   display: flex;
@@ -60,9 +60,9 @@ main {
   align-self: center;
 }
 form {
-  margin: 0 auto;
+  margin: 0 auto 20px;
   width: 300px;
-  display: grid;
+  display: none; /* when shown, display: grid; */
   background-color: white;
   padding: 20px;
   border-radius: 10px;
@@ -73,8 +73,14 @@ form input {
 form input[type="text"] {
   padding: 5px 8px;
 }
+form button {
+  margin-top: 15px;
+}
+.show-form {
+  display: grid;
+}
 table {
-  margin: 20px auto;
+  margin: 0 auto;
   text-align: left;
   background-color: white;
   border-collapse: separate;
@@ -83,7 +89,7 @@ table {
 }
 th {
   color: white;
-  padding: 8px 8px 0;
+  padding: 0 8px;
 }
 td {
   background-color: white;
@@ -115,6 +121,9 @@ thead tr th:nth-of-type(4),
 .author {
   min-width: 125px;
 }
+.pages {
+  min-width: 80px;
+}
 .read button,
 .remove button {
   padding: 0;
@@ -127,12 +136,10 @@ thead tr th:nth-of-type(4),
 .read button svg {
   height: 22px;
   color: silver;
-  /* filter: drop-shadow(2px 2px 2px rgb(128, 0, 128, 0.5)); */
 }
 .remove button svg {
   height: 20px;
   color: red;
-  /* filter: drop-shadow(2px 2px 2px rgb(128, 0, 128, 0.5)); */
 }
 .remove button svg:hover {
   color: black;

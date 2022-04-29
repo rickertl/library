@@ -31,6 +31,8 @@ function addBookToLibrary(event) {
   myLibrary.push(newBook);
   console.log(newBook.info());
   console.log(myLibrary);
+  form.reset();
+  form.classList.toggle("show-form");
   listLibrary();
 }
 
@@ -71,7 +73,9 @@ const listLibrary = function () {
     author.textContent = element.author;
     pages.textContent = element.pages;
     read.innerHTML = `
-    <button type="button">
+    <button type="button" title="Read/Unread" class="read-btn" data-id="${myLibrary.indexOf(
+      element
+    )}">
       <svg style="color: ${element.read === "true" ? "green" : "silver"};" 
       viewBox="0 0 24 24">
         <path fill="currentColor" d="M21.59,11.59L23,13L13.5,22.5L8.42,17.41L9.83,16L13.5,19.68L21.59,11.59M4,16V3H6L9,3A4,4 0 0,1 13,7C13,8.54 12.13,9.88 10.85,10.55L14,16H12L9.11,11H6V16H4M6,9H9A2,2 0 0,0 11,7A2,2 0 0,0 9,5H6V9Z" />
@@ -79,7 +83,7 @@ const listLibrary = function () {
     </button>
     `;
     remove.innerHTML = `
-    <button type="button" class="delete-btn" data-cmd="delete" data-id="${myLibrary.indexOf(
+    <button type="button" title="Delete" class="delete-btn" data-cmd="delete" data-id="${myLibrary.indexOf(
       element
     )}">
       <svg viewBox="0 0 24 24">
@@ -91,7 +95,24 @@ const listLibrary = function () {
   table.appendChild(tableBody);
   bookListing.appendChild(table);
   // once table built, listen to delete buttons
+  watchReadButtons();
   watchDeleteButtons();
+};
+
+const watchReadButtons = function () {
+  const readButtons = document.querySelectorAll("button.read-btn");
+  readButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      console.log("click");
+      const bookTarget = myLibrary[button.getAttribute("data-id")];
+      if (bookTarget.read === "true") {
+        bookTarget.read = "false";
+      } else {
+        bookTarget.read = "true";
+      }
+      listLibrary();
+    });
+  });
 };
 
 const watchDeleteButtons = function () {
@@ -121,6 +142,11 @@ const main = document.querySelector("main");
 const bookListing = document.createElement("div");
 bookListing.classList.add("book-listing");
 main.appendChild(bookListing);
+
+// Add Book button show/hide form
+document.querySelector(".add-book").addEventListener("click", () => {
+  form.classList.toggle("show-form");
+});
 
 // Initial load of books array
 listLibrary();

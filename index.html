@@ -31,10 +31,12 @@
         <input type="text" name="author" id="author" />
         <label for="pages">Number of Pages</label>
         <input type="text" name="pages" id="pages" />
-        <input type="radio" id="read" name="status" value="true" checked />
-        <label for="read">Read</label>
-        <input type="radio" id="not-read" name="status" value="false" />
-        <label for="not-read">Not Read Yet</label>
+        <div class="radio-container">
+          <input type="radio" id="read" name="status" value="true" checked />
+          <label for="read">Read</label>
+          <input type="radio" id="not-read" name="status" value="false" />
+          <label for="not-read">Not Read Yet</label>
+        </div>
         <button type="submit" class="btn-dark">Submit</button>
       </form>
     </main>
