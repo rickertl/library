@@ -1,40 +1,33 @@
-let myLibrary = [
-  {
-    title: "The Hobbit",
-    author: "J.R.R. Tolkien",
-    pages: 295,
-    read: false,
-  },
-];
+let myLibrary = [];
 
-function Book(title, author, pages, read) {
+const Book = function (title, author, pages, read) {
   // the constructor...
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.info = function () {
-    return `${title} by ${author}, ${pages} pages, ${
-      read === "true" ? "read" : "not read yet"
-    }`;
-  };
-}
+};
 
-function addBookToLibrary(event) {
+Book.prototype.toggleStatus = function () {
+  if (this.read === "true") {
+    this.read = "false";
+  } else {
+    this.read = "true";
+  }
+};
+
+const addBookToLibrary = function (event) {
   event.preventDefault();
-  // do stuff here
   const title = form.elements["title"].value;
   const author = form.elements["author"].value;
   const pages = form.elements["pages"].value;
   const read = form.elements["status"].value;
   const newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
-  console.log(newBook.info());
-  console.log(myLibrary);
   form.reset();
   form.classList.toggle("show-form");
   listLibrary();
-}
+};
 
 const listLibrary = function () {
   bookListing.textContent = "";
@@ -94,7 +87,7 @@ const listLibrary = function () {
   });
   table.appendChild(tableBody);
   bookListing.appendChild(table);
-  // once table built, listen to delete buttons
+  // once table built, listen to buttons
   watchReadButtons();
   watchDeleteButtons();
 };
@@ -103,13 +96,8 @@ const watchReadButtons = function () {
   const readButtons = document.querySelectorAll("button.read-btn");
   readButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      console.log("click");
       const bookTarget = myLibrary[button.getAttribute("data-id")];
-      if (bookTarget.read === "true") {
-        bookTarget.read = "false";
-      } else {
-        bookTarget.read = "true";
-      }
+      bookTarget.toggleStatus();
       listLibrary();
     });
   });
@@ -120,9 +108,10 @@ const watchDeleteButtons = function () {
   deleteButtons.forEach((button) => {
     button.addEventListener("click", () => {
       if (confirm("Are you sure? Deletion is permanent.") == true) {
-        myLibrary.splice(button.getAttribute("data-id"), 1);
+        const bookTarget = button.getAttribute("data-id");
+        myLibrary.splice(bookTarget, 1);
         // after delete book, list remaining library
-        if (myLibrary.length != 0) {
+        if (myLibrary.length !== 0) {
           listLibrary();
         } else {
           bookListing.textContent = "";
@@ -143,10 +132,13 @@ const bookListing = document.createElement("div");
 bookListing.classList.add("book-listing");
 main.appendChild(bookListing);
 
-// Add Book button show/hide form
+// "Add Book" button show/hide form
 document.querySelector(".add-book").addEventListener("click", () => {
   form.classList.toggle("show-form");
 });
+
+// Populate default book
+myLibrary.push(new Book("The Hobbit", "J.R.R. Tolkien", 295, false));
 
 // Initial load of books array
 listLibrary();
