@@ -3,6 +3,7 @@ let myLibrary = [];
 
 // set "book" prototype
 const book = {
+  read: "false",
   toggleStatus: function () {
     if (this.read === "true") {
       this.read = "false";
@@ -142,7 +143,8 @@ const defaultBook = Object.create(book);
 defaultBook.title = "The Hobbit";
 defaultBook.author = "J.R.R. Tolkien";
 defaultBook.pages = 295;
-defaultBook.read = "false";
+// prototype has default read status of "false"
+// defaultBook.read = "false";
 myLibrary.push(defaultBook);
 
 // initial load of library array
