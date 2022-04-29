@@ -1,4 +1,4 @@
-// create array to hold library books
+// create empty array to hold library books
 let myLibrary = [];
 
 // set "book" prototype
@@ -90,7 +90,7 @@ const listLibrary = function () {
   watchDeleteButtons();
 };
 
-// watch for read status button clicks and call toggle function on click
+// watch for "read status" button clicks and call toggle function on click
 const watchReadButtons = function () {
   const readButtons = document.querySelectorAll("button.read-btn");
   readButtons.forEach((button) => {
@@ -102,7 +102,7 @@ const watchReadButtons = function () {
   });
 };
 
-// watch for delete button clicks and remove book on click
+// watch for "delete" button clicks and remove book on click
 const watchDeleteButtons = function () {
   const deleteButtons = document.querySelectorAll("button.delete-btn");
   deleteButtons.forEach((button) => {
