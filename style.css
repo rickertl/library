@@ -137,6 +137,13 @@ thead tr th:nth-of-type(4),
   height: 22px;
   color: silver;
 }
+.read button svg.status-read {
+  color: green;
+}
+.read button svg.status-read path {
+  stroke: green;
+  stroke-width: 0.5px;
+}
 .remove button svg {
   height: 20px;
   color: red;
