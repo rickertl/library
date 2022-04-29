@@ -1,34 +1,32 @@
+// create array to hold library books
 let myLibrary = [];
 
-const Book = function (title, author, pages, read) {
-  // the constructor...
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+// set "book" prototype
+const book = {
+  toggleStatus: function () {
+    if (this.read === "true") {
+      this.read = "false";
+    } else {
+      this.read = "true";
+    }
+  },
 };
 
-Book.prototype.toggleStatus = function () {
-  if (this.read === "true") {
-    this.read = "false";
-  } else {
-    this.read = "true";
-  }
-};
-
+// using form data, create newBook object, add to myLibrary array
 const addBookToLibrary = function (event) {
   event.preventDefault();
-  const title = form.elements["title"].value;
-  const author = form.elements["author"].value;
-  const pages = form.elements["pages"].value;
-  const read = form.elements["status"].value;
-  const newBook = new Book(title, author, pages, read);
+  const newBook = Object.create(book);
+  newBook.title = form.elements["title"].value;
+  newBook.author = form.elements["author"].value;
+  newBook.pages = form.elements["pages"].value;
+  newBook.read = form.elements["status"].value;
   myLibrary.push(newBook);
   form.reset();
   form.classList.toggle("show-form");
   listLibrary();
 };
 
+// list books from array in a table
 const listLibrary = function () {
   bookListing.textContent = "";
   const table = document.createElement("table");
@@ -92,6 +90,7 @@ const listLibrary = function () {
   watchDeleteButtons();
 };
 
+// watch for read status button clicks and call toggle function on click
 const watchReadButtons = function () {
   const readButtons = document.querySelectorAll("button.read-btn");
   readButtons.forEach((button) => {
@@ -103,6 +102,7 @@ const watchReadButtons = function () {
   });
 };
 
+// watch for delete button clicks and remove book on click
 const watchDeleteButtons = function () {
   const deleteButtons = document.querySelectorAll("button.delete-btn");
   deleteButtons.forEach((button) => {
@@ -121,12 +121,12 @@ const watchDeleteButtons = function () {
   });
 };
 
-// Get form submission
+// get form submission
 // https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onsubmit
 const form = document.querySelector("form");
 form.onsubmit = addBookToLibrary;
 
-// Build container for books
+// build container for books
 const main = document.querySelector("main");
 const bookListing = document.createElement("div");
 bookListing.classList.add("book-listing");
@@ -137,8 +137,13 @@ document.querySelector(".add-book").addEventListener("click", () => {
   form.classList.toggle("show-form");
 });
 
-// Populate default book
-myLibrary.push(new Book("The Hobbit", "J.R.R. Tolkien", 295, false));
+// populate default book
+const defaultBook = Object.create(book);
+defaultBook.title = "The Hobbit";
+defaultBook.author = "J.R.R. Tolkien";
+defaultBook.pages = 295;
+defaultBook.read = "false";
+myLibrary.push(defaultBook);
 
-// Initial load of books array
+// initial load of library array
 listLibrary();
