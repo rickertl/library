@@ -123,7 +123,6 @@ const watchDeleteButtons = function () {
 };
 
 // get form submission
-// https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onsubmit
 const form = document.querySelector("form");
 form.onsubmit = addBookToLibrary;
 
