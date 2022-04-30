@@ -189,7 +189,7 @@ thead tr th:nth-of-type(4),
 @media screen and (min-width: 480px) {
   .logo {
     justify-self: start;
-    margin-bottom: 0;
+    margin-bottom: 5px;
   }
   .top-nav {
     justify-self: end;
