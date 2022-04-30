@@ -38,19 +38,20 @@ button.btn-dark:hover {
 }
 header {
   display: grid;
-  grid-template-columns: 1fr auto;
-  align-content: space-between;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-items: center;
   padding: 10px 40px;
   box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.1);
 }
 main {
-  padding: 30px;
+  padding: 20px 10px;
 }
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
   color: white;
+  margin-bottom: 15px;
 }
 .logo svg {
   height: 80px;
@@ -58,9 +59,10 @@ main {
 }
 .top-nav {
   align-self: center;
+  margin-bottom: 15px;
 }
 form {
-  margin: 0 auto 20px;
+  margin: 15px auto 20px;
   width: 300px;
   display: grid;
   padding: 20px;
@@ -71,19 +73,50 @@ form {
   opacity: 0;
   transition: opacity 0.1s linear;
 }
-form input {
-  margin-bottom: 15px;
-}
-form input[type="text"] {
-  padding: 5px 8px;
-}
-form button {
-  margin-top: 15px;
-}
 form.show-form {
   position: static;
   opacity: 1;
   transition: opacity 1s linear;
+}
+form input[type="text"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 35px;
+  font-size: 1rem;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  margin-bottom: 15px;
+}
+form input:focus {
+  outline-style: none;
+  border: 2px solid indigo;
+}
+form button {
+  margin-top: 15px;
+}
+form .radio-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: space-between;
+  margin-bottom: 10px;
+}
+form .radio-container div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+form .radio-container div input,
+form .radio-container div label {
+  display: flex;
+  align-items: center;
+}
+form .radio-container div input[type="radio"] {
+  accent-color: indigo;
+}
+form .radio-container div label svg {
+  margin-right: 4px;
 }
 table {
   margin: 0 auto;
@@ -92,6 +125,8 @@ table {
   border-collapse: separate;
   border-spacing: 0 8px;
   background-color: transparent;
+  table-layout: auto;
+  width: 100%;
 }
 th {
   color: white;
@@ -123,13 +158,6 @@ thead tr th:nth-of-type(4),
 .pages {
   text-align: center;
 }
-.title,
-.author {
-  min-width: 125px;
-}
-.pages {
-  min-width: 80px;
-}
 .read button,
 .remove button {
   padding: 0;
@@ -138,6 +166,7 @@ thead tr th:nth-of-type(4),
   width: auto;
   display: flex;
   align-items: center;
+  margin: 0 auto;
 }
 .read button svg {
   height: 22px;
@@ -156,5 +185,19 @@ thead tr th:nth-of-type(4),
 }
 .remove button svg:hover {
   color: black;
-  filter: none;
+}
+@media screen and (min-width: 480px) {
+  .logo {
+    justify-self: start;
+    margin-bottom: 0;
+  }
+  .top-nav {
+    justify-self: end;
+    margin-bottom: 0;
+  }
+}
+@media screen and (min-width: 820px) {
+  table {
+    max-width: 800px;
+  }
 }

@@ -18,8 +18,8 @@
             fill="currentColor"
             d="M19 2L14 6.5V17.5L19 13V2M6.5 5C4.55 5 2.45 5.4 1 6.5V21.16C1 21.41 1.25 21.66 1.5 21.66C1.6 21.66 1.65 21.59 1.75 21.59C3.1 20.94 5.05 20.5 6.5 20.5C8.45 20.5 10.55 20.9 12 22C13.35 21.15 15.8 20.5 17.5 20.5C19.15 20.5 20.85 20.81 22.25 21.56C22.35 21.61 22.4 21.59 22.5 21.59C22.75 21.59 23 21.34 23 21.09V6.5C22.4 6.05 21.75 5.75 21 5.5V19C19.9 18.65 18.7 18.5 17.5 18.5C15.8 18.5 13.35 19.15 12 20V6.5C10.55 5.4 8.45 5 6.5 5Z"
           />
-          <h1 class="">Library</h1>
         </svg>
+        <h1>Library</h1>
       </div>
       <div class="top-nav">
         <button class="add-book btn-light">Add Book</button>
@@ -34,16 +34,36 @@
         <label for="pages">Number of Pages</label>
         <input type="text" name="pages" id="pages" />
         <div class="radio-container">
-          <input type="radio" id="read" name="status" value="true" />
-          <label for="read">Read</label>
-          <input
-            type="radio"
-            id="not-read"
-            name="status"
-            value="false"
-            checked
-          />
-          <label for="not-read">Not Read Yet</label>
+          <div>
+            <input type="radio" id="read" name="status" value="true" />
+            <label for="read">
+              <svg width="24" height="24" viewBox="0 0 24 24">
+                <path
+                  fill="green"
+                  d="M21.59,11.59L23,13L13.5,22.5L8.42,17.41L9.83,16L13.5,19.68L21.59,11.59M4,16V3H6L9,3A4,4 0 0,1 13,7C13,8.54 12.13,9.88 10.85,10.55L14,16H12L9.11,11H6V16H4M6,9H9A2,2 0 0,0 11,7A2,2 0 0,0 9,5H6V9Z"
+                />
+              </svg>
+              Read</label
+            >
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="not-read"
+              name="status"
+              value="false"
+              checked
+            />
+            <label for="not-read">
+              <svg width="24" height="24" viewBox="0 0 24 24">
+                <path
+                  fill="silver"
+                  d="M21.59,11.59L23,13L13.5,22.5L8.42,17.41L9.83,16L13.5,19.68L21.59,11.59M4,16V3H6L9,3A4,4 0 0,1 13,7C13,8.54 12.13,9.88 10.85,10.55L14,16H12L9.11,11H6V16H4M6,9H9A2,2 0 0,0 11,7A2,2 0 0,0 9,5H6V9Z"
+                />
+              </svg>
+              Not Read Yet</label
+            >
+          </div>
         </div>
         <button type="submit" class="btn-dark">Submit</button>
       </form>

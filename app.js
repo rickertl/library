@@ -32,7 +32,7 @@ const listLibrary = function () {
   bookListing.textContent = "";
   const table = document.createElement("table");
   table.innerHTML = `
-  <thead>
+	<thead>
     <tr>
       <th>Title</th>
       <th>Author</th>
