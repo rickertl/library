@@ -1,26 +1,32 @@
 // create empty array to hold library books
 let myLibrary = [];
 
-// set "book" prototype
-const book = {
-  read: "false",
-  toggleStatus: function () {
+// set "Book" class
+class Book {
+  constructor(title, author, pages, read = false) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+  toggleStatus() {
     if (this.read === "true") {
       this.read = "false";
     } else {
       this.read = "true";
     }
-  },
-};
+  }
+}
 
 // using form data, create newBook object, add to myLibrary array
 const addBookToLibrary = function (event) {
   event.preventDefault();
-  const newBook = Object.create(book);
-  newBook.title = form.elements["title"].value;
-  newBook.author = form.elements["author"].value;
-  newBook.pages = form.elements["pages"].value;
-  newBook.read = form.elements["status"].value;
+  const newBook = new Book(
+    form.elements["title"].value,
+    form.elements["author"].value,
+    Number(form.elements["pages"].value),
+    form.elements["status"].value
+  );
   myLibrary.push(newBook);
   form.reset();
   form.classList.toggle("show-form");
@@ -63,7 +69,9 @@ const listLibrary = function () {
     row.appendChild(remove);
     title.textContent = element.title;
     author.textContent = element.author;
-    pages.textContent = element.pages;
+    element.pages === 0
+      ? (pages.textContent = "")
+      : (pages.textContent = element.pages);
     read.innerHTML = `
     <button type="button" title="Read/Unread" class="read-btn" data-id="${myLibrary.indexOf(
       element
@@ -138,12 +146,7 @@ document.querySelector(".add-book").addEventListener("click", () => {
 });
 
 // populate default book
-const defaultBook = Object.create(book);
-defaultBook.title = "The Hobbit";
-defaultBook.author = "J.R.R. Tolkien";
-defaultBook.pages = 295;
-// prototype has default read status of "false"
-// defaultBook.read = "false";
+const defaultBook = new Book("The Hobbit", "J.R.R. Tolkien", 295);
 myLibrary.push(defaultBook);
 
 // initial load of library array
